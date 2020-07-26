@@ -5,7 +5,7 @@
 
 ## Features
 
-- 載入外部的Json檔案呈現網頁的餐廳資訊
+- 載入db資料呈現網頁的餐廳資訊
 - 點擊餐廳清單，可查看餐廳詳細資訊，包括
   - 類別
   - 地址
@@ -69,4 +69,11 @@ nodemon app.js
 Express is listening on http://localhost:3000
 ```
 
+## 開發環境
+
+-Node.js: v10.15.0
+-Express: v4.17.1
+-Express-Handlebars: v5.1.0
+-Body-parser: v1.19.0
+-mongoose: v5.9.25
 
