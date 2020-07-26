@@ -1,5 +1,57 @@
+<form action="/restaurants/{{ restaurant._id}}/edit" method="POST" style="margin: 20px 20px;">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label>Name-CHT</label>
+      <input type="text" class="form-control" placeholder="name" name="name" value="{{restaurant.name}}" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServer02">Name-EN</label>
+      <input type="text" class="form-control" placeholder="name-en" name="name_en" value="{{restaurant.name_en}}">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Phone</label>
+      <input type="text" class="form-control" placeholder="phone" name="phone" value="{{restaurant.phone}}" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Image</label>
+      <input type="text" class="form-control" placeholder="image" name="image" value="{{restaurant.image}}" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Location</label>
+      <input type="text" class="form-control" placeholder="location" name="location" value="{{restaurant.location}}"
+        required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Rating</label>
+      <input type="text" class="form-control" placeholder="rating" name="rating" value="{{restaurant.rating}}" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Description</label>
+      <input type="text" class="form-control" placeholder="description" name="description"
+        value="{{restaurant.description}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <select class="custom-select" name="category" value="{{restaurant.category}}" required>
+      <option value="">Category menu</option>
+      <option value="台式料理">台式料理</option>
+      <option value="日本料理">日本料理</option>
+      <option value="義式餐廳">義式餐廳</option>
+      <option value="美式餐廳">美式餐廳</option>
+      <option value="酒吧">酒吧</option>
+      <option value="咖啡廳">咖啡廳</option>
+      <option value="中東料理">中東料理</option>
+      <option value="異國料理">異國料理</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-info">Save</button>
+  <a href="/" class="btn btn-info">Back</a>
+</form>
+
+{{!-- 
 <form action="/restaurants/{{ restaurant._id}}/edit" method="POST">
   <input type="text" placeholder="name" name="name" value="{{restaurant.name}}">
   <button type="submit" class="btn btn-info">Save</button>
   <a href="/" class="btn btn-info">Back</a>
 </form>
+ --}}

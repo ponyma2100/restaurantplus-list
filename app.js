@@ -37,7 +37,14 @@ app.get('/restaurants/new', (req, res) => {
 })
 app.post('/restaurants', (req, res) => {
   const name = req.body.name
-  return Restaurant.create({ name }) //存入資料庫
+  const name_en = req.body.name_en
+  const phone = req.body.phone
+  const image = req.body.image
+  const location = req.body.location
+  const rating = req.body.rating
+  const description = req.body.description
+  const category = req.body.category
+  return Restaurant.create({ name, name_en, phone, image, location, rating, description, category }) //存入資料庫
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
 })
