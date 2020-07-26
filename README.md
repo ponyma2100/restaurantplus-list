@@ -51,16 +51,16 @@ npm install  //安裝套件
 npm install -g nodemon
 ```
 
-5.透過nodemon 啟動伺服器，執行app.js
-
-```
-nodemon app.js
-```
-
-6.新增餐廳種子資料，運行npm run seed 腳本
+5.新增餐廳種子資料，運行npm run seed 腳本
 
 ```
 npm run seed
+```
+
+6.透過nodemon 啟動伺服器，執行app.js
+
+```
+nodemon app.js
 ```
 
 7.當 terminal 出現以下字樣，表示伺服器已啟動並成功連結
