@@ -72,8 +72,12 @@ Express is listening on http://localhost:3000
 ## 開發環境
 
 -Node.js: v10.15.0
+
 -Express: v4.17.1
+
 -Express-Handlebars: v5.1.0
+
 -Body-parser: v1.19.0
+
 -mongoose: v5.9.25
 
