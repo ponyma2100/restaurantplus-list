@@ -7,8 +7,20 @@
           width="30" height="30" class="d-inline-block align-top" alt="好。吃">
         我的餐廳清單
       </a>
+      <div style=" display: flex;">
+        <form action="/restaurants/{{ restaurant._id}}/edit" style="margin-right: 10px;">
+          <button type="text" class="btn btn-info">edit</button>
+        </form>
+        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="margin-right: 10px;">
+          <button type="submit" class="btn btn-danger">delete</button>
+        </form>
+        <a href="/" class="btn btn-info">Back</a>
+      </div>
+
     </div>
+
   </nav>
+
 
   <div class="banner"></div>
 </header>
@@ -50,9 +62,4 @@
         style="max-width: 600px;">
     </div>
   </div>
-  <a href="/restaurants/{{ restaurant._id}}/edit">edit</a>
-  <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
-    <button type="submit">delete</button>
-  </form>
-  <a href="/">back</a>
 </div>

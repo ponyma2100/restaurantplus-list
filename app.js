@@ -79,6 +79,15 @@ app.post('/restaurants/:id/delete', (req, res) => {
     .catch(error => console.error())
 })
 
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  return Restaurant.find({ name: { $regex: keyword, $options: "i" } })
+    .lean()
+    .then((restaurants) => res.render('index', { restaurants, keyword }))
+    .catch(error => console.error())
+
+})
+
 app.listen(port, (req, res) => {
   console.log(`Express is listening on http://localhost:${port}`)
 })
