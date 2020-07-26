@@ -1,4 +1,5 @@
 # restaurantplus-list
+![示意圖](https://i.imgur.com/I8h5dpX.png)
 
 使用Node.js與Express建置的餐廳清單，提供餐廳列表、餐廳詳細資料以及搜尋餐廳功能。
 
