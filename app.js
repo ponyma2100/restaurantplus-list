@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
+const restaurant = require('./models/restaurant')
 const app = express()
 const port = 3000
 const db = mongoose.connection
@@ -38,6 +39,15 @@ app.post('/restaurants', (req, res) => {
   const name = req.body.name
   return Restaurant.create({ name }) //存入資料庫
     .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
+})
+
+// detail
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
     .catch(error => console.error(error))
 })
 
