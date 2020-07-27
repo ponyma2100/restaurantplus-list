@@ -68,10 +68,11 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
+  const { name, rating } = req.body
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = name
+      restaurant.rating = rating
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))

@@ -23,7 +23,8 @@
     </div>
     <div class="col-md-4 mb-3">
       <label>Rating</label>
-      <input type="text" class="form-control" placeholder="rating" name="rating" value="{{restaurant.rating}}" required>
+      <input type="number" class="form-control" placeholder="rating" name="rating" value="{{restaurant.rating}}" min="0"
+        max="10" step="0.1" required>
     </div>
     <div class="col-md-4 mb-3">
       <label>Description</label>
@@ -47,11 +48,3 @@
   <button type="submit" class="btn btn-info">Save</button>
   <a href="/" class="btn btn-info">Back</a>
 </form>
-
-{{!-- 
-<form action="/restaurants/{{ restaurant._id}}/edit" method="POST">
-  <input type="text" placeholder="name" name="name" value="{{restaurant.name}}">
-  <button type="submit" class="btn btn-info">Save</button>
-  <a href="/" class="btn btn-info">Back</a>
-</form>
- --}}
