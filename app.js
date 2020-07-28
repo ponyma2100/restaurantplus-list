@@ -5,6 +5,7 @@ const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
 const restaurant = require('./models/restaurant')
+const Handlebars = require('handlebars')
 const app = express()
 const port = 3000
 const db = mongoose.connection
@@ -36,15 +37,8 @@ app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
 app.post('/restaurants', (req, res) => {
-  const name = req.body.name
-  const name_en = req.body.name_en
-  const phone = req.body.phone
-  const image = req.body.image
-  const location = req.body.location
-  const rating = req.body.rating
-  const description = req.body.description
-  const category = req.body.category
-  return Restaurant.create({ name, name_en, phone, image, location, rating, description, category }) //存入資料庫
+  const { name, name_en, phone, image, location, rating, description, category, google_map } = req.body
+  return Restaurant.create({ name, name_en, phone, image, location, rating, description, category, google_map }) //存入資料庫
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
 })
@@ -68,11 +62,18 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
-  const { name, rating } = req.body
+  const { name, name_en, phone, image, location, rating, description, category, google_map } = req.body
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = name
+      restaurant.name_en = name_en
+      restaurant.phone = phone
+      restaurant.image = image
+      restaurant.location = location
       restaurant.rating = rating
+      restaurant.description = description
+      restaurant.category = category
+      restaurant.google_map = google_map
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
@@ -94,6 +95,14 @@ app.get('/search', (req, res) => {
     .then((restaurants) => res.render('index', { restaurants, keyword }))
     .catch(error => console.error())
 
+})
+
+Handlebars.registerHelper('setSelected', function (value, currentValue) {
+  if (value === currentValue) {
+    return 'selected'
+  } else {
+    return ''
+  }
 })
 
 app.listen(port, (req, res) => {

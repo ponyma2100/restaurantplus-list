@@ -23,7 +23,8 @@
     </div>
     <div class="col-md-4 mb-3">
       <label>google_map</label>
-      <input type="text" class="form-control" placeholder="google_map" name="google_map">
+      <input type="text" class="form-control" placeholder="google_map" name="google_map"
+        value="{{restaurant.google_map}}">
     </div>
     <div class="col-md-4 mb-3">
       <label>Rating</label>
@@ -39,14 +40,14 @@
   <div class="form-group">
     <select class="custom-select" name="category" value="{{restaurant.category}}" required>
       <option value="">Category menu</option>
-      <option value="台式料理">台式料理</option>
-      <option value="日本料理">日本料理</option>
-      <option value="義式餐廳">義式餐廳</option>
-      <option value="美式餐廳">美式餐廳</option>
-      <option value="酒吧">酒吧</option>
-      <option value="咖啡廳">咖啡廳</option>
-      <option value="中東料理">中東料理</option>
-      <option value="異國料理">異國料理</option>
+      <option value="台式料理" {{#setSelected restaurant.category "台式料理"}}{{/setSelected}}>台式料理 </option>
+      <option value="日本料理" {{#setSelected restaurant.category "日本料理"}}{{/setSelected}}>日本料理</option>
+      <option value="義式餐廳" {{#setSelected restaurant.category "義式餐廳"}}{{/setSelected}}>義式餐廳</option>
+      <option value="美式餐廳" {{#setSelected restaurant.category "美式餐廳"}}{{/setSelected}}>美式餐廳</option>
+      <option value="酒吧" {{#setSelected restaurant.category "酒吧"}}{{/setSelected}}>酒吧</option>
+      <option value="咖啡廳" {{#setSelected restaurant.category "咖啡廳"}}{{/setSelected}}>咖啡廳</option>
+      <option value="中東料理" {{#setSelected restaurant.category "中東料理"}}{{/setSelected}}>中東料理</option>
+      <option value="異國料理" {{#setSelected restaurant.category "異國料理"}}{{/setSelected}}>異國料理</option>
     </select>
   </div>
   <button type="submit" class="btn btn-info">Save</button>
