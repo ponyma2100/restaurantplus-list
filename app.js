@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
 const restaurant = require('./models/restaurant')
 const Handlebars = require('handlebars')
+const methodOverride = require('method-override') //載入method-override
 const app = express()
 const port = 3000
 const db = mongoose.connection
@@ -14,7 +15,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
-
+app.use(methodOverride('_method'))
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 db.on('error', () => {
@@ -51,7 +52,7 @@ app.get('/restaurants/:id', (req, res) => {
     .then((restaurant) => res.render('show', { restaurant }))
     .catch(error => console.error(error))
 })
-
+// edit page
 app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -59,8 +60,8 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch(error => console.error(error))
 })
-
-app.post('/restaurants/:id/edit', (req, res) => {
+// edit
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   const { name, name_en, phone, image, location, rating, description, category, google_map } = req.body
   return Restaurant.findById(id)
@@ -79,15 +80,15 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.error(error))
 })
-
-app.post('/restaurants/:id/delete', (req, res) => {
+// delete
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.error())
 })
-
+// search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   return Restaurant.find({ name: { $regex: keyword, $options: "i" } })

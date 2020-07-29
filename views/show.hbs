@@ -11,7 +11,7 @@
         <form action="/restaurants/{{ restaurant._id}}/edit" style="margin-right: 10px;">
           <button type="text" class="btn btn-info">edit</button>
         </form>
-        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="margin-right: 10px;">
+        <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="margin-right: 10px;">
           <button type="submit" class="btn btn-danger">delete</button>
         </form>
         <a href="/" class="btn btn-info">Back</a>

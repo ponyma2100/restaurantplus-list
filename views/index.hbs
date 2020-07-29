@@ -59,7 +59,7 @@
               <form action="./restaurants/{{ this._id }}/edit" style="display: inline;">
                 <button type="text" class="btn btn-info">edit</button>
               </form>
-              <form action="./restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+              <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
                 <button type="submit" class="btn btn-danger">delete</button>
             </div>
 
