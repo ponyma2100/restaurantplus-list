@@ -7,9 +7,23 @@
           width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
         我的外送餐廳清單
       </a>
-      <form action="./restaurants/new" style="display: inline;">
-        <button type="text" class="btn btn-info">Create</button>
-      </form>
+
+      <div class="function" style="display: flex;">
+        <form action="/sort" method="get">
+          <select class="input-group-prepend" name="sort" id="select" onchange="this.form.submit()">
+            <option value="">Sort</option>
+            <option value="name" {{#setSelected sort "name"}} selected {{/setSelected}}>A->Z</option>
+            <option value="-name" {{#setSelected sort "-name"}} selected {{/setSelected}}>Z->A</option>
+            <option value="category" {{#setSelected sort "category"}} selected {{/setSelected}}>類別</option>
+            <option value="location" {{#setSelected sort "location"}} selected {{/setSelected}}>地區</option>
+            <option value="rating" {{#setSelected sort "rating"}} selected {{/setSelected}}>星級</option>
+          </select>
+
+        </form>
+        <form action="./restaurants/new" style="margin:0px 10px;">
+          <button type="text" class="btn btn-info">Create</button>
+        </form>
+      </div>
     </div>
   </nav>
   <div class="banner"></div>
@@ -23,8 +37,8 @@
         <h4 class="mb-2">您最愛的美食，由 吸腹 為您外送
         </h4>
         <div class="input-group">
-          <input type="text" name="keyword" value="{{ keyword }}" class="form-control" placeholder="輸入餐廳、分類"
-            aria-label="Restaurant Name..." value="" aria-describedby="search-button">
+          <input type="text" name="keyword" value="{{ keyword }}" class="form-control" placeholder="輸入餐廳"
+            aria-label="Restaurant Name..." aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fa fa-search"></i></button>
           </div>

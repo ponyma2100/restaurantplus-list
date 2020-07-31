@@ -4,6 +4,14 @@ header {
 
 .navbar .navbar-brand {
   color: #4592af;
+  
+}
+.navbar {
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 1;
 }
 
 .navbar .navbar-brand:hover {
@@ -77,6 +85,7 @@ header {
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 
 @media screen and (max-width: 992px) {
   
