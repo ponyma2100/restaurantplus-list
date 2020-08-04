@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // search
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  console.log(req.query.keyword)
+  // console.log(req.query.keyword)
   return Restaurant.find({ name: { $regex: keyword, $options: "i" } })
     .lean()
     .then((restaurants) => res.render('index', { restaurants, keyword }))
@@ -23,7 +23,7 @@ router.get('/search', (req, res) => {
 router.get('/sort', (req, res) => {
   const sort = req.query.sort
   const id = req.body._id
-  console.log(sort)
+  // console.log(sort)
   return Restaurant.find(id)
     .lean()
     .sort(sort)

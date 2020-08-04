@@ -6,7 +6,7 @@ const Restaurant = require('../../models/restaurant')
 router.get('/sort', (req, res) => {
   const sort = req.query.sort
   const id = req.body._id
-  console.log(sort)
+  // console.log(sort)
   return Restaurant.find(id)
     .lean()
     .sort(sort)
