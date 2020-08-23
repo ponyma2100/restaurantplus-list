@@ -1,5 +1,6 @@
 const passport = require('passport')
 const User = require('../models/user')
+const user = require('../models/user')
 const LocalStrategy = require('passport-local').Strategy
 
 module.exports = app => {
@@ -26,7 +27,11 @@ module.exports = app => {
   passport.deserializeUser((id, done) => {
     User.findById(id)
       .lean()
-      .then(user => done(null, user))
+      .then(user => {
+        done(null, user)
+        // console.log(user)
+      })
       .catch(err => done(err, null))
   })
+
 }

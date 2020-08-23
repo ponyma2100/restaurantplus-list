@@ -25,6 +25,13 @@ app.use(methodOverride('_method'))
 
 usePassport(app)
 
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated() //回傳布林值
+  res.locals.user = req.user
+  next()
+})
+
+
 app.use(routes)
 
 Handlebars.registerHelper('setSelected', function (value, currentValue) {

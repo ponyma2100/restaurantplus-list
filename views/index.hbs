@@ -1,31 +1,4 @@
 <header>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
-          width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-        我的外送餐廳清單
-      </a>
-
-      <div class="function" style="display: flex;">
-        <form action="/sort" method="get">
-          <select class="input-group-prepend" name="sort" id="select" onchange="this.form.submit()">
-            <option value="">Sort</option>
-            <option value="name" {{#setSelected sort "name"}} selected {{/setSelected}}>A->Z</option>
-            <option value="-name" {{#setSelected sort "-name"}} selected {{/setSelected}}>Z->A</option>
-            <option value="category" {{#setSelected sort "category"}} selected {{/setSelected}}>類別</option>
-            <option value="location" {{#setSelected sort "location"}} selected {{/setSelected}}>地區</option>
-            <option value="rating" {{#setSelected sort "rating"}} selected {{/setSelected}}>星級</option>
-          </select>
-
-        </form>
-        <form action="./restaurants/new" style="margin:0px 10px;">
-          <button type="text" class="btn btn-info">Create</button>
-        </form>
-      </div>
-    </div>
-  </nav>
   <div class="banner"></div>
 </header>
 
@@ -44,6 +17,21 @@
           </div>
         </div>
       </form>
+      <div class="function" style="display: flex;">
+        <form action="/sort" method="get">
+          <select class="input-group-prepend" name="sort" id="select" onchange="this.form.submit()">
+            <option value="">Sort</option>
+            <option value="name" {{#setSelected sort "name"}} selected {{/setSelected}}>A->Z</option>
+            <option value="-name" {{#setSelected sort "-name"}} selected {{/setSelected}}>Z->A</option>
+            <option value="category" {{#setSelected sort "category"}} selected {{/setSelected}}>類別</option>
+            <option value="location" {{#setSelected sort "location"}} selected {{/setSelected}}>地區</option>
+            <option value="rating" {{#setSelected sort "rating"}} selected {{/setSelected}}>星級</option>
+          </select>
+        </form>
+        <form action="./restaurants/new" style="margin:0px 10px;">
+          <button type="text" class="btn btn-info">Create</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
