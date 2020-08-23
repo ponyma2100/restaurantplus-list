@@ -3,7 +3,8 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 router.get('/', (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
@@ -22,9 +23,9 @@ router.get('/search', (req, res) => {
 
 router.get('/sort', (req, res) => {
   const sort = req.query.sort
-  const id = req.body._id
+  const userId = req.user._id
   // console.log(sort)
-  return Restaurant.find(id)
+  return Restaurant.find({ userId })
     .lean()
     .sort(sort)
     .then(restaurants => res.render('index', { restaurants, sort }))
